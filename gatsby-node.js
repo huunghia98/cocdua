@@ -1,87 +1,186 @@
-const _ = require('lodash')
-const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+const toKebabCase = (str) => {
+  return str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map((x) => x.toLowerCase())
+    .join('-');
+};
 
-  return graphql(`
-    {
-      allMarkdownRemark(limit: 1000) {
-        edges {
-          node {
-            id
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          limit: 1000
+        ) {
+          nodes {
             fields {
+              contentType
               slug
             }
             frontmatter {
-              tags
-              templateKey
+              template
             }
           }
         }
+        tagsGroup: allMarkdownRemark(
+          limit: 2000
+          filter: { fields: { contentType: { eq: "posts" } } }
+        ) {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
+        }
       }
-    }
-  `).then((result) => {
-    if (result.errors) {
-      result.errors.forEach((e) => console.error(e.toString()))
-      return Promise.reject(result.errors)
-    }
+    `
+  );
 
-    const posts = result.data.allMarkdownRemark.edges
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading your blog posts`,
+      result.errors
+    );
+    return;
+  }
 
-    posts.forEach((edge) => {
-      const id = edge.node.id
-      createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
-        context: {
-          id,
-        },
-      })
-    })
+  const tags = result.data.tagsGroup.group;
+  const allMarkdownNodes = result.data.allMarkdownRemark.nodes;
 
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach((edge) => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+  const blogMarkdownNodes = allMarkdownNodes.filter(
+    (node) => node.fields.contentType === `posts`
+  );
+
+  const pageMarkdownNodes = allMarkdownNodes.filter(
+    (node) => node.fields.contentType === `pages`
+  );
+
+  if (blogMarkdownNodes.length > 0) {
+    blogMarkdownNodes.forEach((node, index) => {
+      let prevSlug = null;
+      let nextSlug = null;
+
+      if (index > 0) {
+        prevSlug = blogMarkdownNodes[index - 1].fields.slug;
       }
-    })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
 
-    // Make tag pages
-    tags.forEach((tag) => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
+      if (index < blogMarkdownNodes.length - 1) {
+        nextSlug = blogMarkdownNodes[index + 1].fields.slug;
+      }
 
       createPage({
-        path: tagPath,
-        component: path.resolve(`src/templates/tags.js`),
+        path: `${node.fields.slug}`,
+        component: path.resolve(`./src/templates/post-template.js`),
         context: {
-          tag,
+          slug: `${node.fields.slug}`,
+          prevSlug: prevSlug,
+          nextSlug: nextSlug,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  }
+
+  if (pageMarkdownNodes.length > 0) {
+    pageMarkdownNodes.forEach((node) => {
+      if (node.frontmatter.template) {
+        const templateFile = `${String(node.frontmatter.template)}.js`;
+
+        createPage({
+          path: `${node.fields.slug}`,
+          component: path.resolve(`src/templates/${templateFile}`),
+          context: {
+            slug: `${node.fields.slug}`,
+          },
+        });
+      }
+    });
+  }
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${toKebabCase(tag.fieldValue)}/`,
+      component: path.resolve(`./src/templates/tags-template.js`),
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
+  });
+};
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images
+  const { createNodeField } = actions;
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
+    const relativeFilePath = createFilePath({
       node,
-      value,
-    })
+      getNode,
+    });
+
+    const fileNode = getNode(node.parent);
+
+    createNodeField({
+      node,
+      name: `contentType`,
+      value: fileNode.sourceInstanceName,
+    });
+
+    if (fileNode.sourceInstanceName === 'posts') {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/blog${relativeFilePath}`,
+      });
+    }
+
+    if (fileNode.sourceInstanceName === 'pages') {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: relativeFilePath,
+      });
+    }
   }
-}
+};
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`
+    type SiteSiteMetadata {
+      author: Author
+      siteUrl: String
+      social: Social
+    }
+
+    type Author {
+      name: String
+      summary: String
+    }
+
+    type Social {
+      twitter: String
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+      fields: Fields
+    }
+
+    type Frontmatter {
+      title: String
+      description: String
+      date: Date @dateformat
+      template: String
+      tags: [String!]
+    }
+
+    type Fields {
+      slug: String
+      contentType: String
+    }
+  `);
+};

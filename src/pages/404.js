@@ -1,13 +1,24 @@
-import * as React from "react";
-import Layout from "../components/Layout";
+import React from 'react';
+import Layout from '../components/layout';
+import { Ghost } from 'react-kawaii';
+import styled from 'styled-components';
 
-const NotFoundPage = () => (
-  <Layout>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-  </Layout>
-);
+const NotFoundPage = () => {
+  return (
+    <Layout title="404 Not Found">
+      <NotFoundPageWrapper>
+        <Ghost size={240} mood="sad" color="#E0E4E8" />
+        <h1>OOPS..</h1>
+        <p>404. Page not found</p>
+      </NotFoundPageWrapper>
+    </Layout>
+  );
+};
 
 export default NotFoundPage;
+
+const NotFoundPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
