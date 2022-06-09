@@ -2,7 +2,7 @@
 title: Pale Blue Dot
 date: 2021-03-06
 tags: [space, earth]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -18,7 +18,7 @@ It has been said that astronomy is a humbling and character-building experience.
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

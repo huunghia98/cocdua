@@ -13,7 +13,7 @@ Listen, Morty, I hate to break it to you but what people call "love" is just a c
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

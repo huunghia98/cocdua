@@ -2,7 +2,7 @@
 title: Do you know anything about sensory deprivation tanks?
 date: 2021-02-02
 tags: [stranger things, tv series]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -12,7 +12,7 @@ So, Jonathan, how was the pull-out? Hey kiddo, would you like a balloon? We neve
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

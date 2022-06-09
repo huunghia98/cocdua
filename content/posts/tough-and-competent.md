@@ -2,7 +2,7 @@
 title: Tough and Competent
 date: 2021-01-02
 tags: [space, mission, flight control]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -16,7 +16,7 @@ When you leave this meeting today you will go to your office and the first thing
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

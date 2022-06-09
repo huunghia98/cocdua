@@ -12,7 +12,7 @@ I mean, why would a Pop-Tart want to live inside a toaster, Rick? I mean, that w
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

@@ -2,7 +2,7 @@
 title: Nobody normal ever accomplished anything meaningful in this world
 date: 2021-01-21
 tags: [stranger things, tv series]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 ---
 
 Nobody normal ever accomplished anything meaningful in this world. Mistakes have been made. She shut one door! With her mind! Friends don't lie. You act like you want me to be your friend and then you treat me like garbage. It’s about the shadow monster, isn’t it?Why are you keeping this curiosity door lock? You shouldn't like things because people tell you you're supposed to. Friends don't lie. You are such a nerd. No wonder you only hang out with boys.
@@ -13,7 +13,7 @@ Is he? He’s missing, is what he is! We never would've upset you if we knew you
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

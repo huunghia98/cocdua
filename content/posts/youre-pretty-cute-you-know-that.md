@@ -10,7 +10,7 @@ Called him a fag. Is he? He’s missing, is what he is! Oh... candy, leftovers, 
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

@@ -10,7 +10,7 @@ Mornings are for coffee and contemplation. So, Jonathan, how was the pull-out? J
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

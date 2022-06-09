@@ -2,7 +2,7 @@
 title: We Choose to go to the Moon
 date: 2021-01-01
 tags: [space, moon]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -16,7 +16,7 @@ In the last 24 hours we have seen facilities now being created for the greatest 
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

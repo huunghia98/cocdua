@@ -10,7 +10,7 @@ No... no El, you're not the monster. You saved me. Do you understand? You saved 
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

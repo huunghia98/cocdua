@@ -2,7 +2,7 @@
 title: Symbol of Apollo
 date: 2021-01-03
 tags: [space, mission]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -10,7 +10,7 @@ The most significant things we can think about, when we think about Apollo, is t
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

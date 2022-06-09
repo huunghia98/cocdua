@@ -2,7 +2,7 @@
 title: Magnificent Desolation
 date: 2021-02-22
 tags: [space, nasa]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -10,7 +10,7 @@ I believe that space travel will one day become as common as airline travel is t
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

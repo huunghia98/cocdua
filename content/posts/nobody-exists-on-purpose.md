@@ -2,7 +2,7 @@
 title: Nobody exists on purpose
 date: 2020-09-09
 tags: [rick and morty, tv series]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -16,7 +16,7 @@ All right, all right, cool it! I see what's happening here. You're both young, y
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

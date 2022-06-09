@@ -2,7 +2,7 @@
 title: Mornings are for coffee and contemplation
 date: 2020-03-01
 tags: [stranger things, tv series]
-social_image: '/media/rocket.jpg'
+social_image: '../../static/media/rocket.jpg'
 description: This is a custom description for SEO and Open Graph purposes. If it's not provided, it defaults to auto-generated excerpts of the page content.
 ---
 
@@ -14,7 +14,7 @@ You’re going to be home by 8, listening to the Talking Heads and reading Vonne
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 

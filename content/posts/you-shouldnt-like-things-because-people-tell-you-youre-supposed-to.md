@@ -10,7 +10,7 @@ So, Jonathan, how was the pull-out? You’re pretty cute, you know that? Nancy, 
 
 ## Image
 
-![Rocket launch](/media/rocket.jpg)
+![Rocket launch](../../static/media/rocket.jpg)
 
 ## Header
 
