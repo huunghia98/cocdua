@@ -1,12 +1,10 @@
 ---
-title: About Mee
+title: About Cóc Dứa
 template: about-template
-profile_image: ../../static/media/profile-image.jpg
+profile_image: /media/cocdua.jpg
 ---
+# Hi, Chúng mình thích cóc dứa
 
-# Hi, I'm John Doe
-
-This website is a live example of a Gatsby Starter — it's not a real blog.
-People using this starter may want to add some information to this page about them or their business.
-
-
+Về tên của tớ, Cóc dứa đơn giản chỉ là nước ép cóc dứa mà chúng mình đều thích...\
+Vậy Cóc dứa đã được ra đời thế nào?\
+Vào một buổi tối nọ, tớ nói vu vơ muốn viết blog ở trên websie, và cậu ấy đã tạo ra "Cóc Dứa"
